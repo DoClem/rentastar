@@ -1,0 +1,21 @@
+<h1></h1>
+
+<ul>
+<li>
+<%= @celebrity.first_name%>
+<%= @celebrity.last_name %>
+<%= @celebrity.age %>
+<%= @celebrity.address%>
+<%= @celebrity.price%>
+<%= link_to "Delete", celebrity_path(@celebrity), data: {turbo_method: "delete", turbo_confirm: "Are you sure ?" } %>
+</li>
+</ul>
+
+ <%= simple_form_for([@celebrity, @booking]) do |f| %>
+      <%= f.input :start_date %>
+      <%= f.input :end_date %>
+      <%= f.submit class: "btn btn-primary" %>
+  <% end %>
+
+
+<a href="/root"> Back home</a>
