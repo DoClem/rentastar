@@ -11,15 +11,8 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <%# <style>
-    .centered-header {
-      text-align: center;
-      font-size: 3rem;
-      margin-top: 20px;
-    }
-  </style> %>
   </head>
-
+<section style="background: linear-gradient(100.84deg, #FFFFFF 15.33%, #CF9FFF 100%)">
   <body>
     <%= yield %>
 
@@ -27,3 +20,4 @@
        <p class="alert"><%= alert %></p>
   </body>
 </html>
+</section>
