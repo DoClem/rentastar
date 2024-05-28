@@ -7,42 +7,26 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+require "faker"
 
-require "URI"
-API_KEY = 'tY8DbbwHy+hY3kfrM4i2fg==AH2KnOweoY3qRx6O'
-NAMES = [
-  "Brad Pitt", "Scarlett Johansson", "Leonardo DiCaprio",
-  "Morgan Freeman", "Beyonce", "Jay-Z", "Emmanuel Macron", "Jean-Luc Mélenchon",
-  "Serena Williams", "LeBron James", "Teddy Riner", "Lionel Messi"
-]
+Celebrity.delete_all
 
-puts "Cleaning up database..."
-Celebrity.destroy_all
-puts "Database cleaned"
+puts "Creating users..."
 
-created_count = 0
-user = User.create(...)
+User.create(email: 'utilisateur@example.com', password: 'mot_de_passe') if User.count.zero?
 
-NAMES.each do |name|
-  break if created_count >= 10
+puts "Creating celebrities..."
 
-  puts "Importing celebrity data for #{name}"
-  url = "https://api.api-ninjas.com/v1/celebrity?name=#{URI.encode_ww_form(name)}"
-  response = URI.open(url, "X-Api-Key" => API_KEY).read
-  celebrity_data = JSON.parse(response).first
-
-  if celebrity_data
-    puts "Creating #{celebrity_data['name']}"
-    Celebrity.create(
-      name: celebrity_data["name"],
-      bio: celebrity_data["bio"],
-      profile_url: celebrity_data["image"],
-      user: user
-    )
-    created_count += 1
-  else
-    puts "No data found for #{name}"
-  end
+10.times do
+  celebrity = Celebrity.new(
+    first_name: Faker::Artist.name,
+    last_name: Faker::Artist.name,
+    age: rand(19..99),
+    category: Faker::Gender.type,
+    address: Faker::Address.full_address,
+    price: rand(1..100_00),
+    user: User.first
+  )
+  celebrity.save!
 end
-
-puts "Celebrities created: #{created_count}"
+puts "Completed!"
