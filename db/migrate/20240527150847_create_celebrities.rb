@@ -4,7 +4,6 @@ class CreateCelebrities < ActiveRecord::Migration[7.1]
       t.string :first_name
       t.string :last_name
       t.integer :age
-      t.string :category
       t.string :address
       t.integer :price
 
