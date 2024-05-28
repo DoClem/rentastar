@@ -8,12 +8,14 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 require "faker"
+Booking.destroy_all
 
 Celebrity.delete_all
+User.destroy_all
 
 puts "Creating users..."
 
-User.create(email: 'utilisateur@example.com', password: 'mot_de_passe') if User.count.zero?
+User.create(email: 'utilisateur@example.com', password: 'mot_de_passe', first_name: 'prenom', last_name: 'nom')
 
 puts "Creating celebrities..."
 
