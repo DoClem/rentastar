@@ -20,6 +20,7 @@ class CelebritiesController < ApplicationController
   end
 
   def show
+    @booking = Booking.new
   end
 
   def update
