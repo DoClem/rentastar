@@ -19,6 +19,7 @@ Celebrity.destroy_all
 puts "Database cleaned"
 
 created_count = 0
+user = User.create(...)
 
 NAMES.each do |name|
   break if created_count >= 10
@@ -33,7 +34,8 @@ NAMES.each do |name|
     Celebrity.create(
       name: celebrity_data["name"],
       bio: celebrity_data["bio"],
-      profile_url: celebrity_data["image"]
+      profile_url: celebrity_data["image"],
+      user: user
     )
     created_count += 1
   else
