@@ -24,7 +24,7 @@ NAMES.each do |name|
   break if created_count >= 10
 
   puts "Importing celebrity data for #{name}"
-  url = "https://api.api-ninjas.com/v1/celebrity?name=#{CGI.escape(name)}"
+  url = "https://api.api-ninjas.com/v1/celebrity?name=#{URI.encode(name)}"
   response = URI.open(url, "X-Api-Key" => API_KEY).read
   celebrity_data = JSON.parse(response).first
 
