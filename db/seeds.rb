@@ -19,7 +19,7 @@ Celebrity.destroy_all
 puts "Database cleaned"
 
 created_count = 0
-user = User.create(...)
+user = User.create
 
 NAMES.each do |name|
   break if created_count >= 10
