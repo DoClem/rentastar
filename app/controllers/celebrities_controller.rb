@@ -1,4 +1,6 @@
 class CelebritiesController < ApplicationController
+  before_action :set_celebrity, only: [:show, :update, :destroy]
+
   def new
     @celebrity = Celebrity.new
   end
@@ -6,15 +8,38 @@ class CelebritiesController < ApplicationController
   def create
     @celebrity = Celebrity.new(celebrity_params)
     @celebrity.user = current_user
-    @celebrity.save
-    redirect_to celebrity_path(@celebrity)
+    if @celebrity.save
+      redirect_to celebrity_path(@celebrity), notice: 'Celebrity was successfully created.'
+    else
+      render :new
+    end
   end
 
   def index
-    @ruser = User.all
+    @celebrities = Celebrity.all
+  end
+
+  def show
+  end
+
+  def update
+    if @celebrity.update(celebrity_params)
+      redirect_to celebrity_path(@celebrity), notice: 'Celebrity was successfully updated.'
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @celebrity.destroy
+    redirect_to celebrities_path, status: :see_other, notice: 'Celebrity was successfully deleted.'
   end
 
   private
+
+  def set_celebrity
+    @celebrity = Celebrity.find(params[:id])
+  end
 
   def celebrity_params
     params.require(:celebrity).permit(:first_name, :last_name, :age, :address, :category, :price)
