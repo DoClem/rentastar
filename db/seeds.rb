@@ -7,6 +7,8 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+require "URI"
 API_KEY = 'tY8DbbwHy+hY3kfrM4i2fg==AH2KnOweoY3qRx6O'
 NAMES = [
   "Brad Pitt", "Scarlett Johansson", "Leonardo DiCaprio",
@@ -24,7 +26,7 @@ NAMES.each do |name|
   break if created_count >= 10
 
   puts "Importing celebrity data for #{name}"
-  url = "https://api.api-ninjas.com/v1/celebrity?name=#{URI.encode(name)}"
+  url = "https://api.api-ninjas.com/v1/celebrity?name=#{URI.encode_ww_form(name)}"
   response = URI.open(url, "X-Api-Key" => API_KEY).read
   celebrity_data = JSON.parse(response).first
 
