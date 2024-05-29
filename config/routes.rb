@@ -10,11 +10,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   resources :celebrities, only: [:index, :new, :show, :create, :update, :destroy] do
-<<<<<<< HEAD
-=
-
-=======
     resources :bookings, only: [:create, :new]
->>>>>>> 9df7944782858fbf6f4579e001b226441924402f
+
   end
 end
