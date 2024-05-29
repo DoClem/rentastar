@@ -7,38 +7,47 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
-require "faker"
-Booking.destroy_all
+# db/seeds.rb
+require 'open-uri'
+require_relative '../config/environment'
 
-Celebrity.delete_all
-User.destroy_all
 
-puts "Creating users..."
+# Désactiver temporairement les contraintes de clé étrangère
+ActiveRecord::Base.connection.execute("SET session_replication_role = replica;")
 
-user = User.create(email: 'utilisateur@example.com', password: 'mot_de_passe', first_name: 'prenom', last_name: 'nom')
+# Nettoyer la base de données
+Celebrity.destroy_all
 
-puts "Creating celebrities..."
+# Réactiver les contraintes de clé étrangère
+ActiveRecord::Base.connection.execute("SET session_replication_role = DEFAULT;")
 
-celebrities = [
-  { first_name: 'Rihanna', last_name: 'lol', age: 36, address: 'London, England', price: 1500 },
-  { first_name: 'Lewis', last_name: 'Hamilton', age: 39, address: 'London, England', price: 500 },
-  { first_name: 'Peter', last_name: 'Dinklage', age: 54, address: 'New Jersey, USA', price: 100 },
-  { first_name: 'Morgan', last_name: 'Freeman', age: 86, address: 'Memphis, USA', price: 700 },
-  { first_name: 'Jack', last_name: 'Sparrow', age: 60, address: 'La Havane, Cuba', price: 3000 },
-  { first_name: 'Marilyn', last_name: 'Monroe', age: 36,  address: 'California, USA', price: 2000 },
-  { first_name: 'Kendall', last_name: 'Jenner', age: 28, address: 'California, USA', price: 1500 },
-  { first_name: 'Dua', last_name: 'Lipa', age: 28, address: 'London, England', price: 1500 }
-]
+Celebrity.import_celebrities
 
-celebrities.each do |celebrity_data|
-  Celebrity.create!(
+# Suppose que vous avez déjà récupéré les données des célébrités et les URLs des images de l'API
+celebrities_data = fetch_celebrities_data_from_api()
+
+celebrities_data.each do |celebrity_data|
+  # Créez une célébrité dans la base de données
+  celebrity = Celebrity.create!(
     first_name: celebrity_data[:first_name],
     last_name: celebrity_data[:last_name],
     age: celebrity_data[:age],
-    address: celebrity_data[:address],
-    price: celebrity_data[:price],
-    user: user
+    # Autres attributs de célébrité
   )
+
+  # Téléchargez l'image depuis l'URL de l'API
+  image_url = celebrity_data[:image_url]
+  image = open(image_url)
+
+  # Attachez l'image à la célébrité
+  celebrity.photo.attach(io: image, filename: "#{celebrity.first_name}_#{celebrity.last_name}_photo.jpg")
 end
 
-puts "Completed!"
+
+# Supprimer les réservations associées aux célébrités
+Celebrity.all.each do |celebrity|
+  celebrity.bookings.destroy_all
+end
+
+# Ensuite, importer les célébrités
+Celebrity.import_celebrities
