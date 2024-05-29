@@ -15,20 +15,30 @@ User.destroy_all
 
 puts "Creating users..."
 
-User.create(email: 'utilisateur@example.com', password: 'mot_de_passe', first_name: 'prenom', last_name: 'nom')
+user = User.create(email: 'utilisateur@example.com', password: 'mot_de_passe', first_name: 'prenom', last_name: 'nom')
 
 puts "Creating celebrities..."
 
-10.times do
-  celebrity = Celebrity.new(
-    first_name: Faker::Artist.name,
-    last_name: Faker::Artist.name,
-    age: rand(19..99),
-    category: Faker::Gender.type,
-    address: Faker::Address.full_address,
-    price: rand(1..100_00),
-    user: User.first
+celebrities = [
+  { first_name: 'Rihanna', last_name: 'lol', age: 36, address: 'London, England', price: 1500 },
+  { first_name: 'Lewis', last_name: 'Hamilton', age: 39, address: 'London, England', price: 500 },
+  { first_name: 'Peter', last_name: 'Dinklage', age: 54, address: 'New Jersey, USA', price: 100 },
+  { first_name: 'Morgan', last_name: 'Freeman', age: 86, address: 'Memphis, USA', price: 700 },
+  { first_name: 'Jack', last_name: 'Sparrow', age: 60, address: 'La Havane, Cuba', price: 3000 },
+  { first_name: 'Marilyn', last_name: 'Monroe', age: 36,  address: 'California, USA', price: 2000 },
+  { first_name: 'Kendall', last_name: 'Jenner', age: 28, address: 'California, USA', price: 1500 },
+  { first_name: 'Dua', last_name: 'Lipa', age: 28, address: 'London, England', price: 1500 }
+]
+
+celebrities.each do |celebrity_data|
+  Celebrity.create!(
+    first_name: celebrity_data[:first_name],
+    last_name: celebrity_data[:last_name],
+    age: celebrity_data[:age],
+    address: celebrity_data[:address],
+    price: celebrity_data[:price],
+    user: user
   )
-  celebrity.save!
 end
+
 puts "Completed!"
