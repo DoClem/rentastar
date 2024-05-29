@@ -29,7 +29,7 @@
     </div>
   </div>
   <div class="container-fluid d-flex flex-column justify-content-center align-items-center mt-5">
-    <h1><strong> CELEBRITIES </strong></h1>
+    <h1><strong> BOOKINGS </strong></h1>
     <style>
       .container-fluid h1 {
         font-size: 50px;
@@ -40,28 +40,21 @@
         <div class="d-flex justify-content-center align-items-start w-100">
           <div class="col-12 col-md-6 mb-5 me-5" style="margin-top: 100px;">
             <div class="text-center">
-              <h2 class="fs-1 mb-2"><strong>Book</strong> your favorite celebrity, dead or alive.</h2>
-              <h2 class="fs-1 mb-2"><strong>Browse</strong> our latest <strong>celebrity clones.</strong></h2>
-              <p class="fs-17 text-muted mb-3">Our latest technology makes the impossible possible. DNA is no longer a barrier. Book a day with our celebrities to check it out for yourself!</p>
-              <a href = "/celebrities/new" class="btn btn-outline-primary rounded-5 btn-lg" style="margin-top: 50px" type="button">
-          <span class="fs-5 fw-bold">Create Your Own Celebrity Clone</span>
-  </a>
             </div>
           </div>
         </div>
       </div>
       <div class="container mt-5">
         <div class="row row-cols-1 row-cols-md-2 g-4">
-          <% @celebrities.each do |celebrity| %>
+          <% @bookings.each do |booking| %>
             <div class="col">
               <div class="card">
-                <%= link_to celebrity_path(celebrity), style: "text-decoration: none; color: inherit;" do %>
+                <%= link_to booking_path(booking), style: "text-decoration: none; color: inherit;" do %>
                   <div class="card-body">
-                    <h5 class="card-title"><%= celebrity.first_name %> <%= celebrity.last_name %></h5>
-                    <p class="card-text">Age: <%= celebrity.age %></p>
-                    <p class="card-text">Category: <%= celebrity.category %></p>
-                    <p class="card-text">Price: <%= celebrity.price %>$</p>
-                  </div>
+                    <h5 class="card-title"><%= booking.celebrity.first_name %> <%= booking.celebrity.last_name %></h5>
+                    <p class="card-text">Price: <%= booking.celebrity.price %>$</p>
+                    <p class="card-text">Start Date: <%= booking.start_date%>$</p>
+                    <p class="card-text">End Date: <%= booking.end_date %>$</p>
                 <% end %>
               </div>
             </div>
@@ -71,4 +64,3 @@
     </div>
   </div>
 </section>
-
