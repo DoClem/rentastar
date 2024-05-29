@@ -32,3 +32,5 @@ puts "Creating celebrities..."
   celebrity.save!
 end
 puts "Completed!"
+
+Celebrity.create(name)
