@@ -11,6 +11,5 @@ Rails.application.routes.draw do
   # root "posts#index"
   resources :celebrities, only: [:index, :new, :show, :create, :update, :destroy] do
     resources :bookings, only: [:create, :new]
-
   end
 end
