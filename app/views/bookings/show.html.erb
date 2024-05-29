@@ -1,3 +1,4 @@
+
 <section style="background: linear-gradient(100.84deg, #FFFFFF 15.33%, #CF9FFF 80%); padding-bottom: 50px;">
   <div class="navbar transparent navbar-expand-sm navbar-light navbar-lewagon" style="background: linear-gradient(100.84deg, #FFFFFF 15.33%, #CF9FFF 100%)">
   <div class="container-fluid">
@@ -7,6 +8,7 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
           <li class="nav-item active">
@@ -29,23 +31,44 @@
     </div>
   </div>
 </div>
-<div class="container-fluid d-flex flex-column justify-content-center align-items-center mt-5">
-<h2><strong> Please complete the form below </strong></h2>
+  <div class="container-fluid d-flex flex-column justify-content-center align-items-center mt-5">
+<h1><strong> BOOKINGS </strong></h1>
  <style>
         .container-fluid h1 {
             font-size: 50px  ;
         }
 </style>
+
+<div>
+  <div class="container-fluid d-flex flex-column justify-content-center align-items-center">
+    <div class="d-flex justify-content-center align-items-start w-100">
+      <div class="col-12 col-md-6 mb-5 me-5" style="margin-top: 100px;">
+        <div class="text-center">
+          <h2 class="fs-1 mb-2"><strong>Book</strong> your favorite celebrity, dead or alive.</h2>
+          <h2 class="fs-1 mb-2"><strong>Browse</strong> our latest <strong>celebrity clones.</strong></h2>
+          <p class="fs-17 text-muted mb-3">Our latest technology makes the impossible possible. DNA is no longer a barrier. Book a day with our celebrities to check it out for yourself!</p>
+          <button class="btn btn-outline-primary rounded-5 btn-lg" type="button">
+            <span class="fs-5 fw-bold">Book Now</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- app/views/celebrities/index.html.erb -->
 <div class="container mt-5">
-    <div class="row row-cols-1 row-cols-md-2 g-4">
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+    <% @bookings.each do |booking| %>
       <div class="col">
- <%= simple_form_for @celebrity do |f| %>
-      <%= f.input :first_name %>
-      <%= f.input :last_name %>
-      <%= f.input :age %>
-      <%= f.input :address %>
-      <%= f.input :price %>
-      <%= f.submit class: "btn btn-outline-primary rounded-5 btn-lg" %>
-      <a class="btn btn-outline-primary rounded-5 btn-lg" href="/">Home</a>
-  <% end %>
+        <div class="card">
+          <a href="/bookings/<%= booking.id %>" style="text-decoration: none; color: inherit;">
+            <div class="card-body">
+              <h5 class="card-title"><%= celebrity.first_name %> <%= celebrity.last_name %></h5>
+              <p class="card-text">Age: <%= booking.start_date %></p>
+              <p class="card-text">Category: <%= booking.end_date %></p>
+            </div>
+          </a>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
