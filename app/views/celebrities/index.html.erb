@@ -1,7 +1,7 @@
 <section style="background: linear-gradient(100.84deg, #FFFFFF 15.33%, #CF9FFF 80%); padding-bottom: 50px;">
   <div class="navbar transparent navbar-expand-sm navbar-light navbar-lewagon" style="background: linear-gradient(100.84deg, #FFFFFF 15.33%, #CF9FFF 100%)">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="/root">
       <img src="https://static.vecteezy.com/system/resources/previews/025/750/706/original/north-star-compass-logo-compass-icon-modern-star-symbol-vector.jpg" />
 </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -11,7 +11,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Celebrities</a>
+            <a class="nav-link" href="/celebrities">Celebrities</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Dashboard</a>
@@ -53,97 +53,23 @@
       </div>
     </div>
   </div>
-
-  <div class="container mt-5">
+<div class="container mt-5">
     <div class="row row-cols-1 row-cols-md-2 g-4">
-      <div class="col">
-        <div class="card">
-          <img src="https://cache.cosmopolitan.fr/data/photo/w1200_h630_ci/66/rihanna.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title"><strong>Rihanna</strong></h5>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          </div>
+        <div class="col">
+            <div class="cards">
+                <% @celebrities.each do |celebrity| %>
+                    <div class="card">
+                        <a href="/celebrities/<%= celebrity.id %>" style="text-decoration: none; color: inherit;">
+                            <div class="card-body">
+                                <h5 class="card-title"><%= celebrity.first_name %> <%= celebrity.last_name %></h5>
+                                <p class="card-text">Age: <%= celebrity.age %></p>
+                                <p class="card-text">Category: <%= celebrity.category %></p>
+                                <p class="card-text">Price: <%= celebrity.price %>$</p>
+                            </div>
+                        </a>
+                    </div>
+                <% end %>
+            </div>
         </div>
-      </div>
-       <div class="col">
-        <div class="card">
-          <img src="https://prmeng.rosselcdn.net/sites/default/files/dpistyles_v2/prm_16_9_856w/2022/10/17/node_352218/39200969/public/2022/10/17/B9732425119Z.1_20221017210941_000%2BG64LFU095.3-0.jpg?itok=uXf7g8jy1666038306" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title"><strong>Karim Benzema</strong></h5>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card">
-          <img src="https://i0.wp.com/www.heyuguys.com/images/2017/01/Peter-Dinklage.jpg?fit=2400%2C1200&ssl=1" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title"><strong>Peter Dinklage</strong></h5>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card">
-          <img src="https://esq.h-cdn.co/assets/16/09/1600x800/landscape-1457047366-morgan-lead.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title"><strong>Morgan Freeman</strong></h5>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
-
-  <div class="container mt-5">
-    <div class="row row-cols-1 row-cols-md-2 g-4">
-      <div class="col">
-        <div class="card">
-          <img src="https://www.terazmuzyka.pl/wp-content/uploads/news/ja/jacksparrow_1057.jpeg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title"><strong>Jack Sparrow</strong></h5>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          </div>
-        </div>
-      </div>
-       <div class="col">
-        <div class="card">
-          <img src="https://www.usatoday.com/gcdn/-mm-/c901e8f865a8e3027a9751d247549dd712aa1ec1/c=0-355-2400-1711/local/-/media/2015/06/01/USATODAY/USATODAY/635687568841887218-XXX-American-Masters--Marilyn-Monroe-American-Masters--Marilyn-.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title"><strong>Marylin Monroe</strong></h5>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card">
-          <img src="https://hips.hearstapps.com/hmg-prod/images/kendall-jenner-attends-the-2023-academy-museum-gala-at-news-photo-1701721154.jpg?crop=1xw:0.375xh;center,top" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title"><strong>Kendall Jenner</strong></h5>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card">
-          <img src="https://www.thetimes.co.uk/imageserver/image/%2Fmethode%2Fsundaytimes%2Fprod%2Fweb%2Fbin%2Fc1e06da4-0060-11ee-91d8-175820cfdf88.jpg?crop=1600%2C900%2C0%2C0&resize=1200" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title"><strong>Dua Lipa</strong></h5>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-     </section>
-
-<div class="cards">
-  <% @celebrities.each do |celebrity| %>
-  <div class="card">
-  </div>
-  <% end %>
-</div>
 </div>
