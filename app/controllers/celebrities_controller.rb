@@ -32,7 +32,7 @@ class CelebritiesController < ApplicationController
   end
 
   def destroy
-    @celebrity.destroy
+    @celebrity.destroy!
     redirect_to celebrities_path, status: :see_other, notice: 'Celebrity was successfully deleted.'
   end
 
