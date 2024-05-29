@@ -1,0 +1,12 @@
+<%= form_with(model: celebrity, local: true) do |form| %>
+  <!-- Autres champs existants -->
+
+  <div class="field">
+    <%= form.label :photo %>
+    <%= form.file_field :photo %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
