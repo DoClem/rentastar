@@ -7,7 +7,6 @@ class BookingsController < ApplicationController
   end
 
   def show
-    # Assurez-vous que @booking.celebrity n'est pas nil
     if @booking.celebrity.nil?
       redirect_to bookings_path, alert: "Celebrity not found for this booking."
     end

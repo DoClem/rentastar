@@ -1,4 +1,3 @@
-
   <div class="container-fluid d-flex flex-column justify-content-center align-items-center mt-5">
 <h1><strong> <%= @celebrity.first_name %> <%= @celebrity.last_name %> </strong></h1>
  <style>
@@ -27,8 +26,37 @@
      <%= link_to ' Delete ', celebrity_path(@celebrity), data: {turbo_method: "delete", turbo_confirm: "Are you sure ?" }, class: "btn btn-outline-danger rounded-5 btn-lg"%>
   <% end %>
 
-  <a class= "btn btn-outline-primary rounded-5 btn-lg" href="/celebrities"> Back To Celebrities </a>
-
-<%# <div>
-<a class= "btn btn-outline-primary rounded-5 btn-lg" href="/Celebrities"> Cancel Booking </a>
-</div> %>
+    </div>
+    <div class="row mt-3">
+      <div class="col">
+        <a class="btn btn-primary" href="/celebrities">Back To Celebrities</a>
+    </div>
+    </div>
+  </div>
+</div>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Book now !
+</button>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Booking</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="col">
+        <%= simple_form_for([@celebrity, @booking], html: { data: { controller: "datepicker" }}) do |f| %>
+          <h3> <%="Please Select Your Dates"%></h3>
+          <%= f.input :start_date, as: :string, input_html: { data: { datepicker_unavailable_dates_value: @bookings_dates.to_json, datepicker_target: "start" } }  %>
+          <%= f.input :end_date, as: :string, input_html: { data: { datepicker_unavailable_dates_value: @bookings_dates.to_json, datepicker_target: "endDate" } } %>
+        <%= f.submit class:"btn btn-primary" %>
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
