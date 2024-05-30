@@ -1,37 +1,37 @@
 
   <div class="container-fluid d-flex flex-column justify-content-center align-items-center mt-5">
+
     <h1><strong> BOOKINGS </strong></h1>
     <style>
       .container-fluid h1 {
         font-size: 50px;
       }
     </style>
+
     <div>
-      <div class="container-fluid d-flex flex-column justify-content-center align-items-center">
+      <div class="container-fluid d-flex flex-column justify-content-center ">
         <div class="d-flex justify-content-center align-items-start w-100">
-          <div class="col-12 col-md-6 mb-5 me-5" style="margin-top: 100px;">
+          <div class="col-12 col-md-6 mb-5 me-5" style="margin-top: 100px; ">
             <div class="text-center">
-            </div>
-          </div>
-        </div>
-      </div>
+
+
       <div class="container mt-5">
-        <div class="row row-cols-1 row-cols-md-2 g-4">
-          <% @bookings.each do |booking| %>
-            <div class="col">
-              <div class="card">
-                <%= link_to booking_path(booking), style: "text-decoration: none; color: inherit;" do %>
-                  <div class="card-body">
-                    <h5 class="card-title"><%= booking.celebrity.first_name %> <%= booking.celebrity.last_name %></h5>
-                    <p class="card-text">Price: <%= booking.celebrity.price %>$</p>
-                    <p class="card-text">Start Date: <%= booking.start_date%>$</p>
-                    <p class="card-text">End Date: <%= booking.end_date %>$</p>
-                <% end %>
-              </div>
+  <div class="row row-cols-1 row-cols-md-1 g-3"> <!-- Changed g-1 to g-3 for increased gutter spacing -->
+    <% @bookings.each do |booking| %>
+      <div class="col">
+        <div class="card" style="background-color: rgba(255, 255, 255, 0.1); border-radius: 50px; margin-bottom: 20px;"> <!-- Added margin-bottom for extra spacing -->
+          <%= link_to booking_path(booking), style: "text-decoration: none; color: inherit;" do %>
+            <div class="card-body">
+              <img src="https://cache.cosmopolitan.fr/data/photo/w1200_h630_ci/66/rihanna.jpg" class="d-block mx-auto img-fluid rounded-5 pb-3" alt="...">
+              <h3 class="card-title"><strong><%= booking.celebrity.first_name %> <%= booking.celebrity.last_name %></strong></h3>
+              <h4 class="card-text"><strong>Total</strong> <%= booking.celebrity.price %> $</h4>
+              <h4 class="card-text"><strong>From</strong> <%= booking.start_date %> <strong>To</strong> <%= booking.end_date %></h4>
             </div>
           <% end %>
         </div>
       </div>
-    </div>
+    <% end %>
+  </div>
+</div>
   </div>
 </section>
