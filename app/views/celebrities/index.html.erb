@@ -1,33 +1,4 @@
 
-<section style="background: linear-gradient(100.84deg, #FFFFFF 15.33%, #CF9FFF 80%); padding-bottom: 50px;">
-  <div class="navbar transparent navbar-expand-sm navbar-light navbar-lewagon" style="background: linear-gradient(100.84deg, #FFFFFF 15.33%, #CF9FFF 100%)">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/">
-        <img src="https://static.vecteezy.com/system/resources/previews/025/750/706/original/north-star-compass-logo-compass-icon-modern-star-symbol-vector.jpg" />
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="/celebrities">Celebrities</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Dashboard</a>
-          </li>
-          <li class="nav-item dropdown">
-            <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="true" src="https://media.licdn.com/dms/image/C4E03AQFMbo-M3a16Ig/profile-displayphoto-shrink_800_800/0/1639432747995?e=2147483647&v=beta&t=tu97UuRHe28wOR119KNKzWVa4JcBsBvXR4-3A3o9wdY" />
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Dashboard</a>
-              <a class="dropdown-item" data-turbo-method="delete" href="#">Log out</a>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
   <div class="container-fluid d-flex flex-column justify-content-center align-items-center mt-5">
     <h1><strong> CELEBRITIES </strong></h1>
     <style>
@@ -40,9 +11,7 @@
         <div class="d-flex justify-content-center align-items-start w-100">
           <div class="col-12 col-md-6 mb-5 me-5" style="margin-top: 100px;">
             <div class="text-center">
-              <h2 class="fs-1 mb-2"><strong>Book</strong> your favorite celebrity, dead or alive.</h2>
-              <h2 class="fs-1 mb-2"><strong>Browse</strong> our latest <strong>celebrity clones.</strong></h2>
-              <p class="fs-17 text-muted mb-3">Our latest technology makes the impossible possible. DNA is no longer a barrier. Book a day with our celebrities to check it out for yourself!</p>
+              <h2 class="fs-1 mb-2"><strong>Book</strong> or <strong>Create</strong> your favorite celebrity clones.</h2>
               <a href = "/celebrities/new" class="btn btn-outline-primary rounded-5 btn-lg" style="margin-top: 50px" type="button">
           <span class="fs-5 fw-bold">Create Your Own Celebrity Clone</span>
   </a>
@@ -54,13 +23,12 @@
         <div class="row row-cols-1 row-cols-md-2 g-4">
           <% @celebrities.each do |celebrity| %>
             <div class="col">
-              <div class="card">
+              <div class="card" style="background-color: rgba(255, 255, 255, 0.1);">
                 <%= link_to celebrity_path(celebrity), style: "text-decoration: none; color: inherit;" do %>
-                  <div class="card-body">
-                    <h5 class="card-title"><%= celebrity.first_name %> <%= celebrity.last_name %></h5>
-                    <p class="card-text">Age: <%= celebrity.age %></p>
-                    <p class="card-text">Category: <%= celebrity.category %></p>
-                    <p class="card-text">Price: <%= celebrity.price %>$</p>
+                  <div class="card-body rounded-5">
+                   <img src="https://cache.cosmopolitan.fr/data/photo/w1200_h630_ci/66/rihanna.jpg" class="d-block mx-auto img-fluid rounded-5 pb-3" alt="...">
+                    <h3 class="card-title"> <strong> <%= celebrity.first_name %> <%= celebrity.last_name %></strong></h3>
+                    <h4 class="card-text"><strong><%= celebrity.price %> $/Hrs</strong></h4>
                   </div>
                 <% end %>
               </div>
@@ -70,6 +38,3 @@
       </div>
     </div>
   </div>
-
-
-</section>
