@@ -1,0 +1,19 @@
+require 'cloudinary'
+
+development:
+  cloud_name: "dztjphpgl"
+  api_key: "397966395591281"
+  api_secret: "L7D_4Iw7OpO_16z5rkklt_MrAUM"
+  secure: true
+
+production:
+  cloud_name: "dztjphpgl"
+  api_key: "397966395591281"
+  api_secret: "L7D_4Iw7OpO_16z5rkklt_MrAUM"
+  secure: true
+
+test:
+  cloud_name: "vdztjphpgl"
+  api_key: "397966395591281"
+  api_secret: "L7D_4Iw7OpO_16z5rkklt_MrAUM"
+  secure: true
