@@ -26,6 +26,7 @@
       <%= f.input :start_date %>
       <%= f.input :end_date %>
       <%= f.submit class: "btn btn-outline-primary rounded-5 btn-lg" %>
+     <%= link_to ' Delete ', celebrity_path(@celebrity), data: {turbo_method: "delete", turbo_confirm: "Are you sure ?" }, class: "btn btn-outline-danger rounded-5 btn-lg"%>
   <% end %>
 
   <a class= "btn btn-outline-primary rounded-5 btn-lg" href="/celebrities"> Back To Celebrities </a>

@@ -32,8 +32,16 @@ class CelebritiesController < ApplicationController
   end
 
   def search
-    query = params[:query]
-    @celebrities = Celebrity.where('first_name LIKE ? OR last_name LIKE ?', "%#{query}%", "%#{query}%")
+    query = params[:query].downcase
+    query_words = query.split
+
+    conditions = Array.new(query_words.size, 'LOWER(first_name) LIKE ? OR LOWER(last_name) LIKE ? OR LOWER(CONCAT(first_name, last_name)) LIKE ? OR LOWER(CONCAT(first_name, last_name)) LIKE ?').join(' OR ')
+
+    values = query_words.flat_map do |word|
+      ["%#{word}%", "%#{word}%", "%#{word}%", "%#{word}%"]
+    end
+
+    @celebrities = Celebrity.where(conditions, *values)
     render :search
   end
 
