@@ -1,0 +1,66 @@
+
+<section style="background: linear-gradient(100.84deg, #FFFFFF 15.33%, #CF9FFF 80%); padding-bottom: 50px;">
+  <div class="navbar transparent navbar-expand-sm navbar-light navbar-lewagon" style="background: linear-gradient(100.84deg, #FFFFFF 15.33%, #CF9FFF 100%)">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">
+        <img src="https://static.vecteezy.com/system/resources/previews/025/750/706/original/north-star-compass-logo-compass-icon-modern-star-symbol-vector.jpg" />
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/celebrities">Celebrities</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Dashboard</a>
+          </li>
+          <li class="nav-item dropdown">
+            <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="true" src="https://media.licdn.com/dms/image/C4E03AQFMbo-M3a16Ig/profile-displayphoto-shrink_800_800/0/1639432747995?e=2147483647&v=beta&t=tu97UuRHe28wOR119KNKzWVa4JcBsBvXR4-3A3o9wdY" />
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Dashboard</a>
+              <a class="dropdown-item" data-turbo-method="delete" href="#">Log out</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid d-flex flex-column justify-content-center align-items-center mt-5">
+    <h1><strong> BOOKINGS </strong></h1>
+    <style>
+      .container-fluid h1 {
+        font-size: 50px;
+      }
+    </style>
+    <div>
+      <div class="container-fluid d-flex flex-column justify-content-center align-items-center">
+        <div class="d-flex justify-content-center align-items-start w-100">
+          <div class="col-12 col-md-6 mb-5 me-5" style="margin-top: 100px;">
+            <div class="text-center">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container mt-5">
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+          <% @bookings.each do |booking| %>
+            <div class="col">
+              <div class="card">
+                <%= link_to booking_path(booking), style: "text-decoration: none; color: inherit;" do %>
+                  <div class="card-body">
+                    <h5 class="card-title"><%= booking.celebrity.first_name %> <%= booking.celebrity.last_name %></h5>
+                    <p class="card-text">Price: <%= booking.celebrity.price %>$</p>
+                    <p class="card-text">Start Date: <%= booking.start_date%>$</p>
+                    <p class="card-text">End Date: <%= booking.end_date %>$</p>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

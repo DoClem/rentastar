@@ -1,8 +1,8 @@
 class Celebrity < ApplicationRecord
-
+c
   belongs_to :user, dependent: :destroy
 
-  has_many :booking
+  has_many :bookings
 
   validates :first_name, presence: true
   validates :last_name, presence: true
