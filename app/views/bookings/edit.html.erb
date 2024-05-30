@@ -1,5 +1,5 @@
   <div class="container-fluid d-flex flex-column justify-content-center align-items-center mt-5">
-<h1><strong> <%= @booking.celebrity.first_name %> <%= @booking.celebrity.last_name %> </strong></h1>
+<h1><strong> <%= @celebrity.first_name %> <%= @celebrity.last_name %> </strong></h1>
  <style>
         .container-fluid h1 {
             font-size: 50px  ;
@@ -11,12 +11,18 @@
         <div class="card" style="border-radius: 15px; overflow: hidden; background-color: rgba(255, 255, 255, 0.1);">
           <img src="https://cache.cosmopolitan.fr/data/photo/w1200_h630_ci/66/rihanna.jpg" class="card-img-top" alt="...">
           <div class="card-body">
-            <h4><strong><%= @booking.celebrity.first_name %>
-            <%= @booking.celebrity.last_name %> -
+            <h4><strong><%= @celebrity.first_name %>
+            <%= @celebrity.last_name %> -
 
-            <%= @booking.celebrity.price%> $/ Hrs</strong>
+            <%= @celebrity.price%> $/ Hrs</strong>
             </h4>
             <%# <%= link_to "Cancel", celebrity_path(@celebrity), data: {turbo_method: "delete", turbo_confirm: "Are you sure ?" } %>
           </div>
         </div>
       </div>
+ <%= simple_form_for([@celebrity, @booking]) do |f| %>
+      <h3><%= "Please Select Your Dates " %></h3>
+      <%= f.input :start_date %>
+      <%= f.input :end_date %>
+      <%= f.submit class: "btn btn-outline-primary rounded-5 btn-lg" %>
+  <% end %>
