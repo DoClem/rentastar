@@ -21,12 +21,12 @@
           </div>
         </div>
       </div>
- <%= simple_form_for([@celebrity, @booking]) do |f| %>
-      <h3><%= "Please Select Your Dates " %></h3>
-      <%= f.input :start_date %>
-      <%= f.input :end_date %>
-      <%= f.submit class: "btn btn-outline-primary rounded-5 btn-lg" %>
-  <% end %>
+<%= simple_form_for([@celebrity, @booking]) do |f| %>
+  <h3><%= "Please Select Your Dates " %></h3>
+  <%= f.input :start_date, input_html: { id: "booking_start_date", class: "flatpickr" } %>
+  <%= f.input :end_date, input_html: { id: "booking_end_date", class: "flatpickr" } %>
+  <%= f.submit class: "btn btn-outline-primary rounded-5 btn-lg" %>
+<% end %>
 
   <a class= "btn btn-outline-primary rounded-5 btn-lg" href="/celebrities"> Back To Celebrities </a>
 
