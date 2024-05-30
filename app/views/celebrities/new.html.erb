@@ -1,4 +1,3 @@
-
 <div class="container-fluid d-flex flex-column justify-content-center align-items-center mt-5">
 <h2><strong> Please complete the form below </strong></h2>
  <style>
@@ -14,12 +13,12 @@
       <%= f.input :last_name %>
       <%= f.input :age %>
       <%= f.input :address %>
+      <%= f.input :photo, as: :file %>
       <%= f.input :price %>
       <%= f.submit class: "btn btn-outline-primary rounded-5 btn-lg" %>
       <a class="btn btn-outline-primary rounded-5 btn-lg" href="/">Home</a>
   <% end %>
 </div>
-
 <div class="container mt-5">
     <div class="row row-cols-1 row-cols-md-2 g-4">
       <div class="col">
@@ -28,4 +27,4 @@
           <div class="card-body">
           </div>
         </div>
-      </div>
+      </div> 
