@@ -1,5 +1,5 @@
 class Celebrity < ApplicationRecord
-
+c
   belongs_to :user, dependent: :destroy
 
   has_many :bookings
