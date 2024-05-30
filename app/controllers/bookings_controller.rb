@@ -1,10 +1,16 @@
 class BookingsController < ApplicationController
+  before_action :set_booking, only: [:show, :edit, :update, :destroy]
+  before_action :set_celebrity, only: [:create]
+
   def index
     @bookings = Booking.all
   end
 
   def show
-    @booking = Booking.find(params[:id])
+    # Assurez-vous que @booking.celebrity n'est pas nil
+    if @booking.celebrity.nil?
+      redirect_to bookings_path, alert: "Celebrity not found for this booking."
+    end
   end
 
   def new
@@ -13,23 +19,41 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-    @celebrity = Celebrity.find(params[:celebrity_id])
     @booking.celebrity = @celebrity
     @booking.user = current_user
+
     if @booking.save
-      redirect_to celebrities_path, notice: "Booking sucess !"
+      redirect_to bookings_path(@booking), notice: "Booking success!"
     else
       render 'celebrities/show', status: :unprocessable_entity
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @booking.update(booking_params)
+      redirect_to bookings_path(@bookings), notice: "Booking updated successfully!"
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   def destroy
-    @booking = Booking.find(params[:id])
     @booking.destroy
-    redirect_to booking_path(@booking)
+    redirect_to bookings_path, notice: "Booking was successfully deleted."
   end
 
   private
+
+  def set_booking
+    @booking = Booking.find(params[:id])
+  end
+
+  def set_celebrity
+    @celebrity = Celebrity.find(params[:celebrity_id])
+  end
 
   def booking_params
     params.require(:booking).permit(:start_date, :end_date, :celebrity_id, :user_id)
