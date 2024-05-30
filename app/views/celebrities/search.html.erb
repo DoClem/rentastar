@@ -1,0 +1,24 @@
+<div class="container">
+  <h1>Search Results</h1>
+  <% if @celebrities.any? %>
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+      <% @celebrities.each do |celebrity| %>
+        <div class="col">
+          <div class="card">
+            <%= link_to celebrity_path(celebrity), style: "text-decoration: none; color: inherit;" do %>
+<img src="https://cache.cosmopolitan.fr/data/photo/w1200_h630_ci/66/rihanna.jpg" class="card-img-top" alt="<%= celebrity.first_name %> <%= celebrity.last_name %>">
+              <div class="card-body">
+                <h5 class="card-title"><%= celebrity.first_name %> <%= celebrity.last_name %></h5>
+                <p class="card-text">Age: <%= celebrity.age %></p>
+                <p class="card-text">Category: <%= celebrity.category %></p>
+                <p class="card-text">Price: <%= celebrity.price %>$</p>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <p>No celebrities found.</p>
+  <% end %>
+</div>
