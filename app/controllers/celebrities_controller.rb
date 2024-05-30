@@ -38,9 +38,9 @@ class CelebritiesController < ApplicationController
 
   private
 
-  def set_celebrity
-    @celebrity = Celebrity.find(params[:id])
-  end
+    def set_celebrity
+      @celebrity = Celebrity.find(params[:id])
+    end
 
   def celebrity_params
     params.require(:celebrity).permit(:first_name, :last_name, :age, :address, :price)
