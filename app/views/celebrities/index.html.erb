@@ -8,8 +8,8 @@
     </style>
     <div class="col-12 col-md-5 mb-4 me-4" style="margin-top: 50px;">
       <form class="d-flex" action="/search" method="get">
-        <input class="form-control me-2" type="search" placeholder="Search celebrities" aria-label="Search" name="query">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <input class="form-control me-5 rounded-3" type="search" placeholder="Search celebrities ..." aria-label="Search" name="query">
+        <button class="btn btn-outline-primary rounded-5" type="submit">Search</button>
       </form>
     </div>
     <div>
@@ -26,21 +26,21 @@
         </div>
       </div>
       <div class="container mt-5">
-        <div class="row row-cols-1 row-cols-md-2 g-4">
-          <% @celebrities.each do |celebrity| %>
-            <div class="col">
-              <div class="card " style="background-color: rgba(255, 255, 255, 0.1);border-radius: 50px">
-                <%= link_to celebrity_path(celebrity), style: "text-decoration: none; color: inherit;" do %>
-                  <div class="card-body rounded-5">
-                   <img src="https://cache.cosmopolitan.fr/data/photo/w1200_h630_ci/66/rihanna.jpg" class="d-block mx-auto img-fluid rounded-5 pb-3 " alt="...">
-                    <h3 class="card-title"> <strong> <%= celebrity.first_name %> <%= celebrity.last_name %></strong></h3>
-                    <h4 class="card-text"><%= celebrity.price %> $/Hrs</h4>
-                  </div>
-                <% end %>
-              </div>
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+    <% @celebrities.each do |celebrity| %>
+      <div class="col">
+        <div class="card" style="background-color: rgba(255, 255, 255, 0.4); border-radius: 50px;">
+          <%= link_to celebrity_path(celebrity), style: "text-decoration: none; color: inherit;" do %>
+            <div class="card-body rounded-5 text-center">
+              <img src="https://cache.cosmopolitan.fr/data/photo/w1200_h630_ci/66/rihanna.jpg" class="d-block mx-auto img-fluid rounded-5 pb-3" alt="<%= celebrity.first_name %> <%= celebrity.last_name %>">
+              <h3 class="card-title"><strong><%= celebrity.first_name %> <%= celebrity.last_name %></strong></h3>
+              <h4 class="card-text">$ <%= celebrity.price %> / Day</h4>
             </div>
           <% end %>
         </div>
       </div>
+    <% end %>
+  </div>
+</div>
     </div>
   </div>
