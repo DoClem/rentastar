@@ -16,7 +16,6 @@
 
             <%= @booking.celebrity.price%> $/ Hrs</strong>
             </h4>
-            <%# <%= link_to "Cancel", celebrity_path(@celebrity), data: {turbo_method: "delete", turbo_confirm: "Are you sure ?" } %>
           </div>
         </div>
       </div>
@@ -25,5 +24,7 @@
       <%= f.input :start_date %>
       <%= f.input :end_date %>
       <%= f.submit class: "btn btn-outline-primary rounded-5 btn-lg" %>
+                   <%= link_to "Cancel", booking_path(@booking), data: {turbo_method: "delete", turbo_confirm: "Are you sure ?" }, class: "btn btn-outline-danger rounded-5 btn-lg" %>
+
   <% end %>
   <a class= "btn btn-outline-primary rounded-5 btn-lg" href="/bookings"> Back To Bookings </a>
