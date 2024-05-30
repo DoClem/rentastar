@@ -20,7 +20,14 @@ class CelebritiesController < ApplicationController
   end
 
   def show
-    @booking = Booking.new
+    @booking  = Booking.new
+    @bookings = @celebrity.bookings
+    @bookings_dates = @bookings.map do |booking|
+      {
+        from: booking.start_date,
+        to:   booking.end_date
+      }
+    end
   end
 
   def update

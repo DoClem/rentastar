@@ -20,10 +20,11 @@
           </div>
         </div>
       </div>
-<%= simple_form_for([@celebrity, @booking]) do |f| %>
+ <%= simple_form_for([@celebrity, @booking], html: { data: { controller: "datepicker" }}) do |f| %>
       <h3><%= "Update Your Dates " %></h3>
-      <%= f.input :start_date %>
-      <%= f.input :end_date %>
+          <%= f.input :start_date, as: :string, input_html: { data: { datepicker_unavailable_dates_value: [], datepicker_target: "start" } }  %>
+          <%= f.input :end_date, as: :string, input_html: { data: { datepicker_unavailable_dates_value: [], datepicker_target: "endDate" } } %>
       <%= f.submit class: "btn btn-outline-primary rounded-5 btn-lg" %>
   <% end %>
+
   <a class= "btn btn-outline-primary rounded-5 btn-lg" href="/bookings"> Back To Bookings </a>
