@@ -64,6 +64,6 @@ class CelebritiesController < ApplicationController
   end
 
   def celebrity_params
-    params.require(:celebrity).permit(:first_name, :last_name, :age, :address, :price)
+    params.require(:celebrity).permit(:first_name, :last_name, :age, :address, :price, :photo)
   end
 end

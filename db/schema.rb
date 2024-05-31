@@ -57,7 +57,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_30_133724) do
     t.string "first_name"
     t.string "last_name"
     t.integer "age"
-    t.string "category"
     t.string "address"
     t.integer "price"
     t.datetime "created_at", null: false
