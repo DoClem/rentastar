@@ -22,7 +22,7 @@ class BookingsController < ApplicationController
     @booking.user = current_user
 
     if @booking.save
-      redirect_to bookings_path(@booking), notice: "Booking success!"
+      redirect_to bookings_path, notice: "Yay! Booking success! 🎉"
     else
       render 'celebrities/show', status: :unprocessable_entity
     end
@@ -33,7 +33,7 @@ class BookingsController < ApplicationController
 
   def update
     if @booking.update(booking_params)
-      redirect_to bookings_path(@bookings), notice: "Booking updated successfully!"
+      redirect_to bookings_path(@bookings), notice: "Booking updated successfully! 🎉"
     else
       render :edit, status: :unprocessable_entity
     end
@@ -41,7 +41,7 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking.destroy
-    redirect_to bookings_path, notice: "Booking was successfully deleted."
+    redirect_to bookings_path, notice: "Booking was successfully deleted ! 😱"
   end
 
   private
