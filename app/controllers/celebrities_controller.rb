@@ -17,6 +17,7 @@ class CelebritiesController < ApplicationController
 
   def index
     @celebrities = Celebrity.all
+    @celebrity = Celebrity.new
   end
 
   def show
