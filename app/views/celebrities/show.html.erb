@@ -29,6 +29,7 @@
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Book now !
 </button>
+         <%= link_to "Delete Celebrity", celebrity_path(@celebrity), data: {turbo_method: "delete", turbo_confirm: "Are you sure ?" }, class: "btn btn-outline-danger rounded-5 btn-lg" %>
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
