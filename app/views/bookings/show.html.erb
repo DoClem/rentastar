@@ -33,7 +33,6 @@
                   <%= f.input :end_date, as: :string, input_html: { data: { datepicker_unavailable_dates_value: [], datepicker_target: "endDate" } } %>
                   <%= f.submit class: "btn btn-outline-primary rounded-5 btn-lg float-start" %>
                 <% end %>
-
                 <%= link_to "Cancel Booking", booking_path(@booking), data: { turbo_method: "delete", turbo_confirm: "Are you sure ?" }, class: "btn btn-outline-danger rounded-5 btn-lg float-end" %>
               </div>
             </div>

@@ -47,17 +47,14 @@
           <h3> <%="Please Select Your Dates"%></h3>
           <%= f.input :start_date, as: :string, input_html: { data: { datepicker_unavailable_dates_value: @bookings_dates.to_json, datepicker_target: "start" } }  %>
           <%= f.input :end_date, as: :string, input_html: { data: { datepicker_unavailable_dates_value: @bookings_dates.to_json, datepicker_target: "endDate" } } %>
-      </div>
-      </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <%= f.submit class:"btn btn-primary" %>
       </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline-danger rounded-5 btn-lg me-2" data-bs-dismiss="modal">Close</button>
-        <% end %>
       </div>
+      </div>
+        <% end %>
     </div>
   </div>
 </div>
