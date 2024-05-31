@@ -12,7 +12,7 @@
         <div class="d-flex justify-content-center align-items-start w-100">
           <div class="col-12 col-md-6 mb-5 me-5" style="margin-top: 100px;">
             <div class="text-center">
-              <h2 class="fs-1 mb-2"><strong>Book</strong> or <strong>Create</strong> your favorite celebrity clones.</h2>
+              <h2 style="padding:20px" class="fs-1 mb-1"><strong>Book</strong> or <strong> Create</strong> your favorite celebrity clones.</h2>
 <button type="button" class="btn btn-outline-primary rounded-5" data-bs-toggle="modal" data-bs-target="#exampleModal">Create Your Own Celebrity Clone</button>
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -30,8 +30,8 @@
       <%= f.input :photo, as: :file %>
       <%= f.input :price %>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      <%= f.submit class: "btn btn-primary" %>
+        <button type="button" class="btn btn-outline-danger rounded-5" data-bs-dismiss="modal">Close</button>
+      <%= f.submit class: "btn btn-outline-primary rounded-5" %>
       </div>
   <% end %>
       </div>
