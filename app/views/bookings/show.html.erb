@@ -27,26 +27,15 @@
               <h3><strong><%= @booking.celebrity.first_name %> <%= @booking.celebrity.last_name %></strong></h3>
               <h4>$ <%= @booking.celebrity.price %> / Day</h4>
 
-              <div class="card-body rounded-5 text-center" style="padding-top: 10px;">
-  <%= simple_form_for([@celebrity, @booking], html: { data: { controller: "datepicker" }}) do |f| %>
-    <div class="row">
-      <div class="col">
-        <%= f.input :start_date, as: :string, input_html: { data: { datepicker_unavailable_dates_value: [], datepicker_target: "start" } } %>
-      </div>
-      <div class="col">
-        <%= f.input :end_date, as: :string, input_html: { data: { datepicker_unavailable_dates_value: [], datepicker_target: "endDate" } } %>
-      </div>
-    </div>
-    <div class="row mt-3">
-      <div class="col">
-        <%= f.submit class: "btn btn-outline-primary rounded-5 btn-lg float-start" %>
-      </div>
-      <div class="col">
-        <%= link_to "Cancel Booking", booking_path(@booking), data: { turbo_method: "delete", turbo_confirm: "Are you sure ?" }, class: "btn btn-outline-danger rounded-5 btn-lg float-end" %>
-      </div>
-    </div>
-  <% end %>
-</div>
+              <div class="card-body rounded-5 text-center" style="padding:50px; padding-top:20px">
+                <%= simple_form_for([@celebrity, @booking], html: { data: { controller: "datepicker" }}) do |f| %>
+                  <%= f.input :start_date, as: :string, input_html: { data: { datepicker_unavailable_dates_value: [], datepicker_target: "start" } } %>
+                  <%= f.input :end_date, as: :string, input_html: { data: { datepicker_unavailable_dates_value: [], datepicker_target: "endDate" } } %>
+                  <%= f.submit class: "btn btn-outline-primary rounded-5 btn-lg float-start" %>
+                <% end %>
+                <%= link_to "Cancel Booking", booking_path(@booking), data: { turbo_method: "delete", turbo_confirm: "Are you sure ?" }, class: "btn btn-outline-danger rounded-5 btn-lg float-end" %>
+              </div>
+
             </div>
           </div>
         </div>
