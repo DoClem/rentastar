@@ -6,12 +6,11 @@
     }
   </style>
 
-
   <div class="container-fluid">
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 justify-content-center">
       <% @bookings.each do |booking| %>
         <div class="col">
-          <div class="card" style="background-color: rgba(255, 255, 255, 0.4); border-radius: 50px;">
+          <div class="card" style="background-color: rgba(250, 0, 0, 0.08); border-radius: 50px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
             <%= link_to booking_path(booking), style: "text-decoration: none; color: inherit;" do %>
               <div class="card-body rounded-5 text-center">
                 <img src="https://cache.cosmopolitan.fr/data/photo/w1200_h630_ci/66/rihanna.jpg" class="img-fluid rounded-5 pb-3" style="border-radius: 0px; height: 100%; width: 100%;" alt="...">
