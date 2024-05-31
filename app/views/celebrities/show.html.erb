@@ -14,14 +14,14 @@
             <h3><strong><%= @celebrity.first_name %> <%= @celebrity.last_name %> </strong></h3>
             <h4> $ <%= @celebrity.price%> / Day
             </h4>
-            <%# <%= link_to "Cancel", celebrity_path(@celebrity), data: {turbo_method: "delete", turbo_confirm: "Are you sure ?" } %>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Book now !</button>
+            <a class="btn btn-primary" href="/celebrities">Back To Celebrities</a>
           </div>
         </div>
       </div>
     </div>
     <div class="row mt-3">
       <div class="col">
-        <a class="btn btn-primary" href="/celebrities">Back To Celebrities</a>
     </div>
     </div>
   </div>
